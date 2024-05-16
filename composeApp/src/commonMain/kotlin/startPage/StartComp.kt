@@ -2,6 +2,7 @@ package startPage
 
 import DotActiveBGC
 import DotDeActiveBGC
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -44,6 +45,7 @@ import mainBGC
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import tradekmm.composeapp.generated.resources.Res
+import tradekmm.composeapp.generated.resources.ills
 import tradekmm.composeapp.generated.resources.illus
 
 @OptIn(ExperimentalResourceApi::class)
@@ -57,45 +59,93 @@ fun startComp(navController: NavController) {
         contentAlignment = Alignment.BottomCenter
     ) {
         Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.9f)) {
-            Box(
-                modifier = Modifier.fillMaxSize(0.6f)
-                    .align(Alignment.TopCenter)
-            ) {
-                Image(
-                    painter = painterResource(Res.drawable.illus),
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.fillMaxSize(),
-                    contentDescription = null
-                )
 
-            }
+            AnimatedContent(modifier = Modifier.fillMaxSize(), targetState = turn, label = "startpageAnimation", ){
+                if(it == 1){
+                    Column(modifier = Modifier.align(Alignment.TopCenter), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(0.7f).offset(y = -20.dp)
+                        ) {
+                            Image(
+                                painter = painterResource(Res.drawable.illus),
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.fillMaxSize(),
+                                contentDescription = null
+                            )
 
+                        }
 
-            Box(
-                modifier = Modifier.fillMaxWidth().align(Alignment.Center)
-                    .offset(y = 40.dp)
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        "Property",
-                        color = Color.White,
-                        fontSize = 35.sp,
-                        fontWeight = FontWeight.Normal
-                    )
-                    Text(
-                        "Diversity",
-                        style = TextStyle(
-                            brush = brush
-                        ),
-                        fontSize = 40.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                        Box(
+                            modifier = Modifier.fillMaxWidth().offset(y = -50.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    "Property",
+                                    color = Color.White,
+                                    fontSize = 35.sp,
+                                    fontWeight = FontWeight.Normal
+                                )
+                                Text(
+                                    "Diversity",
+                                    style = TextStyle(
+                                        brush = brush
+                                    ),
+                                    fontSize = 40.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+
+                        }
+                    }
+
                 }
+                else{
+                    Column(modifier = Modifier.align(Alignment.TopCenter), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(0.7f).offset(y = -20.dp)
+                        ) {
+                            Image(
+                                painter = painterResource(Res.drawable.ills),
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.fillMaxSize(),
+                                contentDescription = null
+                            )
 
+                        }
+
+                        Box(
+                            modifier = Modifier.fillMaxWidth().offset(y = -70.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    "Convenient",
+                                    style = TextStyle(
+                                        brush = brush
+                                    ),
+                                    fontSize = 40.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    "Transaction",
+                                    color = Color.White,
+                                    fontSize = 35.sp,
+                                    fontWeight = FontWeight.Normal
+                                )
+
+                            }
+
+                        }
+                    }
+
+                }
             }
+
 
             Box(
                 modifier = Modifier.fillMaxWidth()
@@ -128,14 +178,14 @@ fun startComp(navController: NavController) {
                             if (turn == 1) turn = 2 else navController.navigate("homePage")
                         },
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = if(turn == 1) Color(0xFF202832) else Color.Transparent
+                            backgroundColor = if (turn == 1) Color(0xFF202832) else Color.Transparent
 
                         ),
                         shape = RoundedCornerShape(100),
                         contentPadding = PaddingValues(0.dp)
                     ) {
                         Text(
-                            if(turn == 1)"Next" else "start a New Wallet",
+                            if (turn == 1) "Next" else "start a New Wallet",
                             color = Color.White,
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Normal
