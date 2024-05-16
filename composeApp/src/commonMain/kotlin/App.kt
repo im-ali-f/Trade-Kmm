@@ -36,7 +36,7 @@ fun App() {
             composable(route= "startPage"){
                 startComp(navState)
             }
-            composable(route= "red"){
+            composable(route= "homePage"){
                 Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Color.Red).clickable { navState.navigate("startPage") })
             }
         }
