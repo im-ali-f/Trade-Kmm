@@ -22,6 +22,9 @@ import androidx.navigation.createGraph
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import startPage.startComp
+import tradekmm.composeapp.generated.resources.Res
+import tradekmm.composeapp.generated.resources.illus
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -29,12 +32,12 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun App() {
     MaterialTheme {
         val navState = rememberNavController()
-        NavHost(navController = navState , startDestination = "home"){
-            composable(route= "home"){
-                Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Color.Blue).clickable { navState.navigate("red") })
+        NavHost(navController = navState , startDestination = "startPage"){
+            composable(route= "startPage"){
+                startComp(navState)
             }
             composable(route= "red"){
-                Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Color.Red).clickable { navState.navigate("home") })
+                Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Color.Red).clickable { navState.navigate("startPage") })
             }
         }
     }
