@@ -123,19 +123,19 @@ fun startComp(navController: NavController) {
 
                     Button(
                         modifier = Modifier.fillMaxWidth().padding(start = 25.dp, end = 25.dp)
-                            .height(48.dp).clip(RoundedCornerShape(100)),
+                            .height(48.dp).clip(RoundedCornerShape(100)).background(brush),
                         onClick = {
                             if (turn == 1) turn = 2 else navController.navigate("homePage")
                         },
                         colors = ButtonDefaults.buttonColors(
-                            contentColor = Color(0xFF202832),
-                            backgroundColor = Color(0xFF202832)
+                            backgroundColor = if(turn == 1) Color(0xFF202832) else Color.Transparent
 
                         ),
+                        shape = RoundedCornerShape(100),
                         contentPadding = PaddingValues(0.dp)
                     ) {
                         Text(
-                            "Next",
+                            if(turn == 1)"Next" else "start a New Wallet",
                             color = Color.White,
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Normal
