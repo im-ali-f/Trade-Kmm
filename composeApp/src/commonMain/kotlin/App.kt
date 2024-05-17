@@ -19,6 +19,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
+import homePage.HomeComp
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -32,12 +33,12 @@ import tradekmm.composeapp.generated.resources.illus
 fun App() {
     MaterialTheme {
         val navState = rememberNavController()
-        NavHost(navController = navState , startDestination = "startPage"){
+        NavHost(navController = navState , startDestination = "homePage"){
             composable(route= "startPage"){
                 startComp(navState)
             }
             composable(route= "homePage"){
-                Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Color.Red).clickable { navState.navigate("startPage") })
+                HomeComp(navState)
             }
         }
     }
