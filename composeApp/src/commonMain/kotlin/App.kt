@@ -33,7 +33,7 @@ import tradekmm.composeapp.generated.resources.illus
 fun App() {
     MaterialTheme {
         val navState = rememberNavController()
-        NavHost(navController = navState , startDestination = "homePage"){
+        NavHost(navController = navState , startDestination = "startPage"){
             composable(route= "startPage"){
                 startComp(navState)
             }
@@ -43,3 +43,4 @@ fun App() {
         }
     }
 }
+
